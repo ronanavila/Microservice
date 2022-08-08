@@ -30,7 +30,14 @@ services:
   pgadmin:
     image: dpage/pgadmin4
 
+  discount.grpc:
+    image: ${DOCKER_REGISTRY-}discountgrpc
+    build:
+      context: .
+      dockerfile: Discount.GRPC/Dockerfile
+
 volumes:
   mongo_data:
   postgres_data:
   pgadmin_data:
+
