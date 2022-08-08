@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 
 services:
   catalogdb:
@@ -18,3 +18,18 @@ services:
       - catalogdb
     ports:
       - "8000:80"
+
+  basket.api:
+    container_name: basket.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "CacheSettings__ConnectionString=basketdb:6379"
+    depends_on:
+       - basketdb
+    ports:
+      - "8001:80"
+  basketdb:
+    container_name: basketdb
+    restart: always
+    ports:
+      - "6379:6379"

@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.7'
 
 services:
   catalogdb:
@@ -8,6 +8,15 @@ services:
     build:
       context: .
       dockerfile: Catalog.API/Dockerfile
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Basket.API/Dockerfile
+
+  basketdb:
+    image: redis:alpine
 
 volumes:
   mongo_data:
