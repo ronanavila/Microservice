@@ -18,5 +18,19 @@ services:
   basketdb:
     image: redis:alpine
 
+  discont.api:
+    image: ${DOCKER_REGISTRY-}discontapi
+    build:
+      context: .
+      dockerfile: Discont.API/Dockerfile
+
+  discountdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
 volumes:
   mongo_data:
+  postgres_data:
+  pgadmin_data:

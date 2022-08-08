@@ -28,7 +28,7 @@ namespace Discont.API.Controllers
         {
             await _repository.CreateDiscount(coupon);
 
-            return CreatedAtRoute("GetDicount", new {productName = coupon.ProductName}, coupon);
+            return CreatedAtRoute("GetDiscount", new {productName = coupon.ProductName}, coupon);
         }
 
         [HttpPut]
